@@ -5,7 +5,7 @@
 }
 
 html, body {
-    overflow: hidden;
+    overflow: auto;
 }
 
 .webgl {
@@ -20,7 +20,7 @@ html, body {
     top: 8%;
     left: 15%;
     transform: translateX(-50%);
-    font-size: 72px;
+    font-size: 50px;
     z-index: 10;
     padding: 10px;
     font-weight: bold;
@@ -100,9 +100,23 @@ html, body {
 
     left: 15%;
     transform: translateX(-50%);
-    font-size: 24px;
+    font-size: 17px;
     z-index: 100;
     color: #e1e1e1;
     margin-top: 7px;
 
+}
+.scroll-content {
+    height: 200vh; /* Set this to a height that is larger than the viewport */
+    background: linear-gradient(white, gray); /* Optional: just for visibility */
+}
+.scroll-animation {
+    opacity: 0; /* Hidden by default */
+    transform: translateY(50px); /* Initial position before animation */
+    transition: all 0.5s ease-in-out; /* Smooth transition */
+}
+
+.scroll-animation.visible {
+    opacity: 1; /* Fully visible when scrolled into view */
+    transform: translateY(0); /* Bring the element to its final position */
 }
