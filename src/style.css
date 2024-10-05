@@ -2,10 +2,13 @@
 * {
     margin: 0;
     padding: 0;
+    text-decoration: #e1e1e1;
 }
 
 html, body {
     overflow: auto;
+    background-color: black;
+    color: #e1e1e1;
 }
 
 .webgl {
@@ -24,12 +27,10 @@ html, body {
     z-index: 10;
     padding: 10px;
     font-weight: bold;
-
     background-size: 300%;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-
 }
 
 
@@ -108,15 +109,29 @@ html, body {
 }
 .scroll-content {
     height: 200vh; /* Set this to a height that is larger than the viewport */
-    background: linear-gradient(white, gray); /* Optional: just for visibility */
+    background: black; /* Optional: just for visibility */
+    text-decoration: #e1e1e1;
 }
 .scroll-animation {
     opacity: 0; /* Hidden by default */
     transform: translateY(50px); /* Initial position before animation */
+    height: 100vh;
+    width: 100%;
     transition: all 0.5s ease-in-out; /* Smooth transition */
+    background-color: black;
 }
 
 .scroll-animation.visible {
     opacity: 1; /* Fully visible when scrolled into view */
     transform: translateY(0); /* Bring the element to its final position */
+}
+
+.scrolled{
+    color: #e1e1e1;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px;
+    position: fixed;
+    z-index: 1000;
+    text-align: center;
 }

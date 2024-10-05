@@ -4,29 +4,108 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galaxy Generator</title>
+
+    <!-- Custom Fonts -->
     <link rel="stylesheet" href="./style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap" rel="stylesheet">
+
+    <style>
+        /* Fade effect */
+        body {
+            margin: 0;
+            transition: background-color 1s ease; /* Transition for background color */
+        }
+        #main-content, #new-page-content {
+            transition: opacity 1s ease; /* Transition for opacity */
+        }
+        .fade-out {
+            opacity: 0; /* Set opacity to 0 for fade-out effect */
+        }
+        .fade-in {
+            opacity: 1; /* Set opacity to 1 for fade-in effect */
+        }
+        #new-page-content {
+            display: none;
+            opacity: 0; /* Initial state for new page */
+        }
+    </style>
 </head>
 <body>
+<div id="main-content">
+    <!-- Canvas for Three.js rendering -->
+    <canvas class="webgl"></canvas>
 
-<canvas class="webgl"></canvas>
+    <!-- HUD Title -->
+    <div>
+    <h1 id="hud" class="exosky shiny-text top-left-text protest-guerrilla-regular">Voyager-O</h1>
 
-<!-- HUD Title -->
-<h1 id="hud" class="exosky shiny-text top-left-text protest-guerrilla-regular">Galactica</h1>
+    <!-- Additional text -->
+    <p class="brag">A Satellite Campus Production</p>
+    </div>
+    <!-- Scroll content section -->
+    <div class="scroll-content">
+        <p class="scrolled">hello</p>
+    </div>
 
-<!-- New text added to the top left corner -->
-<p class="brag">A Satellite Campus Production</p>
-<div class="scroll-content">
-    <p>hello world</p>
+    <!-- Scroll-triggered animation content -->
+    <div class="scroll-animation">
+        <p class="scrolled">This content will animate when you scroll!</p>
+        <p>Scroll down to see the animation!</p>
+    </div>
+</div>
+<!-- Placeholder for new page content -->
+<div id="new-page-content">
+    <h1>Welcome to the Starry Skies!</h1>
+    <p>Dive into the starry skies that unite us all, no matter the planet!</p>
+    <p>This is your new page content without reloading the page.</p>
 </div>
 
-<!-- Scroll-triggered element -->
-<div class="scroll-animation">
-    <p>This content will animate when you scroll!</p>
-</div>
+<script>
+    const mainContent = document.getElementById('main-content');
+    const newPageContent = document.getElementById('new-page-content');
+    let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop; // Initial scroll position
 
+    // Event listener for scrolling to switch content
+    window.addEventListener('scroll', () => {
+        let currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (currentScrollTop > lastScrollTop) {
+            // User is scrolling down - show new page
+            if (newPageContent.style.display === 'none') {
+                mainContent.classList.add('fade-out');
+
+                // Wait for the fade-out transition to complete before switching content
+                setTimeout(() => {
+                    mainContent.style.display = 'none';
+                    newPageContent.style.display = 'block';
+                    document.body.style.backgroundColor = 'black'; // Change background to black
+                    newPageContent.classList.add('fade-in'); // Fade in the new page
+                }, 1000); // This should match the duration of your CSS transition
+            }
+        } else {
+            // User is scrolling up - go back to main content
+            if (mainContent.style.display === 'none') {
+                newPageContent.classList.remove('fade-in');
+                newPageContent.classList.add('fade-out');
+
+                // Wait for the fade-out transition to complete before switching back content
+                setTimeout(() => {
+                    newPageContent.style.display = 'none';
+                    mainContent.style.display = 'block';
+                    document.body.style.backgroundColor = ''; // Reset background color
+                    mainContent.classList.remove('fade-out'); // Reset opacity for main content
+                }, 1000); // This should match the duration of your CSS transition
+            }
+        }
+
+        lastScrollTop = currentScrollTop; // Update scroll position
+    });
+</script>
+
+<!-- Linking to script.js where the 3D effects and animations will be handled -->
 <script type="module" src="./script.js"></script>
+
 </body>
 </html>

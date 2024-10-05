@@ -142,10 +142,8 @@ scene.add(camera);
 
 // Controls
 const controls = new OrbitControls(camera, canvas);
-controls.enableDamping = true;
-controls.enableZoom = false;
-controls.enablePan = false;
-controls.maxPolarAngle = Math.PI / 2;
+
+controls.enabled = false; // Disable controls by default
 
 /**
  * Renderer
@@ -210,10 +208,10 @@ const onScroll = () => {
     const maxScroll = 1000; // Maximum scroll distance for the transition
 
     // Calculate opacity based on the scroll position
-    const opacity = Math.max(0, 1 - scrollPosition / maxScroll); // Fade out Three.js scene
+    const opacity = Math.max(0, 1 - scrollPosition / maxScroll * 100); // Fade out Three.js scene
     const blackOpacity = Math.min(1, (scrollPosition - maxScroll / 2) / (maxScroll / 2)); // Fade in black overlay
-    const scrollContentOpacity = Math.max(0, (scrollPosition - maxScroll) / maxScroll); // Fade in scroll content
-
+    const scrollContentOpacity = Math.max(0, (scrollPosition - maxScroll + 400) / maxScroll * 1000); // Fade in scroll content
+    console.log(scrollPosition, opacity, blackOpacity, scrollContentOpacity);
     // Dim the Three.js scene elements
     textElements.forEach((el) => {
         el.style.opacity = opacity; // Adjust text opacity
@@ -227,23 +225,11 @@ const onScroll = () => {
         webglCanvas.style.transition = 'opacity 0.5s ease'; // Smooth fade transition
     }
 
-    // Apply black overlay transition
-    if (blackOverlay) {
-        blackOverlay.style.opacity = blackOpacity; // Fade in the black overlay
-        blackOverlay.style.transition = 'opacity 0.5s ease'; // Smooth transition
-    }
 
-    // Handle the scroll content visibility
-    if (scrollPosition >= maxScroll) {
         scrollContent.style.display = 'block'; // Make sure the content is displayed
         scrollContent.style.opacity = scrollContentOpacity; // Gradually fade in content
-        scrollContent.style.transition = 'opacity 0.5s ease'; // Smooth transition for new content
-    } else {
-        scrollContent.style.opacity = 0; // Ensure content is transparent when not fully scrolled
-        setTimeout(() => {
-            scrollContent.style.display = 'none'; // Hide after transition completes
-        }, 500); // Delay hiding until after fade-out
-    }
+        scrollContent.style.transition = 'opacity 1s ease'; // Smooth transition for new content
+
 };
 
 // Add scroll event listener
