@@ -1,0 +1,108 @@
+/* Reset margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    overflow: hidden;
+}
+
+.webgl {
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+}
+
+#hud {
+    position: relative;
+    top: 8%;
+    left: 15%;
+    transform: translateX(-50%);
+    font-size: 72px;
+    z-index: 10;
+    padding: 10px;
+    font-weight: bold;
+
+    background-size: 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+}
+
+
+@keyframes shimmer {
+    0% {
+        background-position: 0%;
+    }
+    100% {
+        background-position: 200%;
+    }
+}
+
+
+
+.top-left-text {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+
+}
+
+.shiny-text {
+    font-size: 100px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #e1e1e1;
+    position: relative;
+    display: inline-block;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background: linear-gradient(90deg, #e1e1e1, #8516c5, #e1e1e1);
+    background-size: 200% auto;
+}
+.protest-guerrilla-regular {
+    font-family: "Protest Guerrilla", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.shiny-text::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    background-size: 200% auto;
+    animation: shine 3s linear infinite;
+    -webkit-background-clip: text;
+    background-clip: text;
+    opacity: 0.6;
+}
+
+@keyframes shine {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+.brag{
+    position: absolute;
+
+    left: 15%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    z-index: 100;
+    color: #e1e1e1;
+    margin-top: 7px;
+
+}
