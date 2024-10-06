@@ -30,6 +30,16 @@
             display: none;
             opacity: 0; /* Initial state for new page */
         }
+
+        /* Centered layout for new content */
+        #new-page-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -39,14 +49,10 @@
 
     <!-- HUD Title -->
     <div>
-    <h1 id="hud" class="exosky shiny-text top-left-text protest-guerrilla-regular">Voyager-O</h1>
+        <h1 id="hud" class="exosky shiny-text top-left-text protest-guerrilla-regular">Voyager-O</h1>
 
-    <!-- Additional text -->
-    <p class="brag">A Satellite Campus Production</p>
-    </div>
-    <!-- Scroll content section -->
-    <div class="scroll-content">
-        <p class="scrolled">hello</p>
+        <!-- Additional text -->
+        <p class="brag">A Satellite Campus Production</p>
     </div>
 
     <!-- Scroll-triggered animation content -->
@@ -55,6 +61,7 @@
         <p>Scroll down to see the animation!</p>
     </div>
 </div>
+
 <!-- Placeholder for new page content -->
 <div id="new-page-content">
     <h1>Welcome to the Starry Skies!</h1>
@@ -65,42 +72,23 @@
 <script>
     const mainContent = document.getElementById('main-content');
     const newPageContent = document.getElementById('new-page-content');
-    let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop; // Initial scroll position
 
     // Event listener for scrolling to switch content
     window.addEventListener('scroll', () => {
         let currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-        if (currentScrollTop > lastScrollTop) {
-            // User is scrolling down - show new page
-            if (newPageContent.style.display === 'none') {
-                mainContent.classList.add('fade-out');
+        // When the user scrolls down, initiate fade out and content switch
+        if (newPageContent.style.display === 'none') {
+            mainContent.classList.add('fade-out');
 
-                // Wait for the fade-out transition to complete before switching content
-                setTimeout(() => {
-                    mainContent.style.display = 'none';
-                    newPageContent.style.display = 'block';
-                    document.body.style.backgroundColor = 'black'; // Change background to black
-                    newPageContent.classList.add('fade-in'); // Fade in the new page
-                }, 1000); // This should match the duration of your CSS transition
-            }
-        } else {
-            // User is scrolling up - go back to main content
-            if (mainContent.style.display === 'none') {
-                newPageContent.classList.remove('fade-in');
-                newPageContent.classList.add('fade-out');
-
-                // Wait for the fade-out transition to complete before switching back content
-                setTimeout(() => {
-                    newPageContent.style.display = 'none';
-                    mainContent.style.display = 'block';
-                    document.body.style.backgroundColor = ''; // Reset background color
-                    mainContent.classList.remove('fade-out'); // Reset opacity for main content
-                }, 1000); // This should match the duration of your CSS transition
-            }
+            // Wait for the fade-out transition to complete
+            setTimeout(() => {
+                mainContent.style.display = 'none'; // Hide the old content
+                newPageContent.style.display = 'flex'; // Show the new content
+                document.body.style.backgroundColor = 'black'; // Set the background color to black
+                newPageContent.classList.add('fade-in'); // Fade in the new content
+            }, 1000); // Delay matches the CSS transition duration
         }
-
-        lastScrollTop = currentScrollTop; // Update scroll position
     });
 </script>
 

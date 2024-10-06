@@ -135,3 +135,17 @@ html, body {
     z-index: 1000;
     text-align: center;
 }
+
+#new-page-content {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-decoration-color: #e1e1e1;
+    z-index: 1000;
+    text-align: center;
+    padding: 20px;
+
+}
