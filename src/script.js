@@ -209,22 +209,21 @@ const onScroll = () => {
     const scrollPosition = window.scrollY;
     const maxScroll = 1000; // Maximum scroll distance for the transition
     const newPageContent = document.getElementById('new-page-content');
-    console.log(newPageContent)
+
     // Calculate opacity based on the scroll position
     const opacity = Math.max(0, 1 - scrollPosition / maxScroll * 100); // Fade out Three.js scene
     const blackOpacity = Math.min(1, (scrollPosition - maxScroll / 2) / (maxScroll / 2)); // Fade in black overlay
     const scrollContentOpacity = Math.max(0, (scrollPosition - maxScroll + 400) / maxScroll * 1000); // Fade in scroll content
     newPageContent.style.opacity = 0;
-    console.log(scrollPosition, opacity, blackOpacity, scrollContentOpacity);
-    // Dim the Three.js scene elements
+
 
     textElements.forEach((el) => {
         el.style.opacity = opacity; // Adjust text opacity
         el.style.transition = 'opacity 0.2s ease'; // Smooth transition for text opacity
     });
     const viewportHeight = window.innerHeight;
-    const topQuarterHeight = viewportHeight / 5;
-
+    const topQuarterHeight = viewportHeight / 2;
+    console.log(scrollPosition, topQuarterHeight , viewportHeight)
     if (scrollY < topQuarterHeight) {
         newPageContent.style.opacity = 1;
         newPageContent.style.transition = 'opacity 0.5s ease';
