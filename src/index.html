@@ -28,7 +28,7 @@
         }
         #new-page-content {
             display: none;
-            opacity: 0; /* Initial state for new page */
+            opacity: 0;
         }
 
         /* Centered layout for new content */
@@ -84,7 +84,8 @@
             // Wait for the fade-out transition to complete
             setTimeout(() => {
                 mainContent.style.display = 'none'; // Hide the old content
-                newPageContent.style.display = 'flex'; // Show the new content
+                newPageContent.style.display = 'block'; // Show the new content
+                newPageContent.style.opacity = '1'; // Set the opacity to 1
                 document.body.style.backgroundColor = 'black'; // Set the background color to black
                 newPageContent.classList.add('fade-in'); // Fade in the new content
             }, 1000); // Delay matches the CSS transition duration
