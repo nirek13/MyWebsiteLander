@@ -227,6 +227,7 @@ const onScroll = () => {
     if (scrollY < topQuarterHeight) {
         newPageContent.style.opacity = 1;
         newPageContent.style.transition = 'opacity 0.5s ease';
+        console.log('loading in')
     }
     else{
         newPageContent.style.opacity = 0;
@@ -238,6 +239,7 @@ const onScroll = () => {
     if (webglCanvas) {
         webglCanvas.style.opacity = opacity; // Fade out canvas
         webglCanvas.style.transition = 'opacity 0.5s ease'; // Smooth fade transition
+
     }
 
 

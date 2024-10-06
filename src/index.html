@@ -87,18 +87,18 @@
             newPageContent.style.display = 'block';
             console.log('Switching content');
 
-            // Wait for the fade-out transition to complete
+
             setTimeout(() => {
-                mainContent.style.display = 'none'; // Hide the old content
-                newPageContent.style.display = 'block'; // Show the new content
-                newPageContent.style.opacity = 1; // Set the opacity to 1
-                document.body.style.backgroundColor = 'black'; // Set the background color to black
-                newPageContent.classList.add('fade-in'); // Fade in the new content
-            }, 1000); // Delay matches the CSS transition duration
+                mainContent.style.display = 'none';
+                newPageContent.style.display = 'block';
+                newPageContent.style.opacity = 1;
+                document.body.style.backgroundColor = 'black';
+                newPageContent.classList.add('fade-in');
+            }, 1000);
         }
     });
 </script>
-<script>// Function to create stars
+<script>
 function createStars() {
     const starField = document.getElementById('new-page-content');
     starField.className = 'stars';
@@ -108,8 +108,8 @@ function createStars() {
         const star = document.createElement('div');
         star.className = 'star';
 
-        // Set random position and size for stars
-        const size = Math.random() * 3 + 1; // Size between 1 and 4
+
+        const size = Math.random() * 3 + 1;
         star.style.width = `${size}px`;
         star.style.height = `${size}px`;
         star.style.top = `${Math.random() * 100}vh`;
@@ -119,10 +119,10 @@ function createStars() {
     }
 }
 
-// Call the function to create stars
+
 createStars();
 </script>
-<!-- Linking to index.js where the 3D effects and animations will be handled -->
+
 <script type="module" src="./index.js"></script>
 
 </body>
