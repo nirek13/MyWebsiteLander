@@ -80,12 +80,14 @@
         // When the user scrolls down, initiate fade out and content switch
         if (newPageContent.style.display === 'none') {
             mainContent.classList.add('fade-out');
+            newPageContent.style.display = 'block';
+            console.log('Switching content');
 
             // Wait for the fade-out transition to complete
             setTimeout(() => {
                 mainContent.style.display = 'none'; // Hide the old content
                 newPageContent.style.display = 'block'; // Show the new content
-                newPageContent.style.opacity = '1'; // Set the opacity to 1
+                newPageContent.style.opacity = 1; // Set the opacity to 1
                 document.body.style.backgroundColor = 'black'; // Set the background color to black
                 newPageContent.classList.add('fade-in'); // Fade in the new content
             }, 1000); // Delay matches the CSS transition duration
