@@ -43,6 +43,23 @@
             flex-direction: column;
             color: white;
         }
+
+        /* Star styles */
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
     </style>
 </head>
 <body>
@@ -79,14 +96,21 @@
 
     // Event listener for scrolling to switch content
     window.addEventListener('scroll', () => {
+        console.log('Scrolling');
         let currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
         // When the user scrolls down, initiate fade out and content switch
-        if (newPageContent.style.display === 'none') {
+        if (true) {
+            setTimeout(() => {
+                mainContent.style.display = 'none';
+                newPageContent.style.display = 'block';
+                newPageContent.style.opacity = 1;
+                document.body.style.backgroundColor = 'black';
+                newPageContent.classList.add('fade-in');
+            }, 1000);
             mainContent.classList.add('fade-out');
             newPageContent.style.display = 'block';
             console.log('Switching content');
-
 
             setTimeout(() => {
                 mainContent.style.display = 'none';
@@ -97,30 +121,28 @@
             }, 1000);
         }
     });
-</script>
-<script>
-function createStars() {
-    const starField = document.getElementById('new-page-content');
-    starField.className = 'stars';
-    document.body.appendChild(starField);
 
-    for (let i = 0; i < 100; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
+    // Function to create stars in the background
+    function createStars() {
+        const starField = document.getElementById('new-page-content');
+        starField.className = 'stars';
+        document.body.appendChild(starField);
 
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
 
-        const size = Math.random() * 3 + 1;
-        star.style.width = `${size}px`;
-        star.style.height = `${size}px`;
-        star.style.top = `${Math.random() * 100}vh`;
-        star.style.left = `${Math.random() * 100}vw`;
+            const size = Math.random() * 3 + 1;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.top = `${Math.random() * 100}vh`;
+            star.style.left = `${Math.random() * 100}vw`;
 
-        starField.appendChild(star);
+            starField.appendChild(star);
+        }
     }
-}
 
-
-createStars();
+    createStars();
 </script>
 
 <script type="module" src="./index.js"></script>

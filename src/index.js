@@ -204,50 +204,50 @@ const textElements = [document.getElementById('hud'), document.querySelector('.b
 const blackOverlay = document.getElementById('black-overlay'); // Assuming you have a black overlay in your HTML
 
 
-const onScroll = () => {
-
-    const scrollPosition = window.scrollY;
-    const maxScroll = 1000; // Maximum scroll distance for the transition
-    const newPageContent = document.getElementById('new-page-content');
-
-    // Calculate opacity based on the scroll position
-    const opacity = Math.max(0, 1 - scrollPosition / maxScroll * 100); // Fade out Three.js scene
-    const blackOpacity = Math.min(1, (scrollPosition - maxScroll / 2) / (maxScroll / 2)); // Fade in black overlay
-    const scrollContentOpacity = Math.max(0, (scrollPosition - maxScroll + 400) / maxScroll * 1000); // Fade in scroll content
-    newPageContent.style.opacity = 0;
-
-
-    textElements.forEach((el) => {
-        el.style.opacity = opacity; // Adjust text opacity
-        el.style.transition = 'opacity 0.2s ease'; // Smooth transition for text opacity
-    });
-    const viewportHeight = window.innerHeight;
-    const topQuarterHeight = viewportHeight / 2;
-    console.log(scrollPosition, topQuarterHeight , viewportHeight)
-    if (scrollY < topQuarterHeight) {
-        newPageContent.style.opacity = 1;
-        newPageContent.style.transition = 'opacity 0.5s ease';
-        console.log('loading in')
-    }
-    else{
-        newPageContent.style.opacity = 0;
-        console.log('loading out')
-        newPageContent.style.transition = 'opacity 0.5s ease';
-    }
-
-    // Fade out the Three.js canvas (replace '.webgl' with your actual Three.js element)
-    const webglCanvas = document.querySelector('.webgl');
-    if (webglCanvas) {
-        webglCanvas.style.opacity = opacity; // Fade out canvas
-        webglCanvas.style.transition = 'opacity 0.5s ease'; // Smooth fade transition
-
-    }
-
-
-
-        console.log("F")
-
-};
+// const onScroll = () => {
+//
+//     const scrollPosition = window.scrollY;
+//     const maxScroll = 1000; // Maximum scroll distance for the transition
+//     const newPageContent = document.getElementById('new-page-content');
+//
+//     // Calculate opacity based on the scroll position
+//     const opacity = Math.max(0, 1 - scrollPosition / maxScroll * 100); // Fade out Three.js scene
+//     const blackOpacity = Math.min(1, (scrollPosition - maxScroll / 2) / (maxScroll / 2)); // Fade in black overlay
+//     const scrollContentOpacity = Math.max(0, (scrollPosition - maxScroll + 400) / maxScroll * 1000); // Fade in scroll content
+//     newPageContent.style.opacity = 0;
+//
+//
+//     textElements.forEach((el) => {
+//         el.style.opacity = opacity; // Adjust text opacity
+//         el.style.transition = 'opacity 0.2s ease'; // Smooth transition for text opacity
+//     });
+//     const viewportHeight = window.innerHeight;
+//     const topQuarterHeight = viewportHeight / 2;
+//     console.log(scrollPosition, topQuarterHeight , viewportHeight)
+//     if (scrollY < topQuarterHeight) {
+//         newPageContent.style.opacity = 1;
+//         newPageContent.style.transition = 'opacity 0.5s ease';
+//         console.log('loading in')
+//     }
+//     else{
+//         newPageContent.style.opacity = 0;
+//         console.log('loading out')
+//         newPageContent.style.transition = 'opacity 0.5s ease';
+//     }
+//
+//     // Fade out the Three.js canvas (replace '.webgl' with your actual Three.js element)
+//     const webglCanvas = document.querySelector('.webgl');
+//     if (webglCanvas) {
+//         webglCanvas.style.opacity = opacity; // Fade out canvas
+//         webglCanvas.style.transition = 'opacity 0.5s ease'; // Smooth fade transition
+//
+//     }
+//
+//
+//
+//         console.log("F")
+//
+// };
 
 // Add scroll event listener
 window.addEventListener('scroll', onScroll);
