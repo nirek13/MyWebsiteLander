@@ -150,3 +150,44 @@ html, body {
     background-color: black;
 
 }
+
+button {
+    background: rgba(128, 0, 128, 0.8); /* Purple with transparency */
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: rgba(128, 0, 128, 1); /* Darker purple on hover */
+}
+
+/* Starry Background */
+.stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: twinkling 1.5s infinite alternate;
+}
+
+@keyframes twinkling {
+    from {
+        opacity: 0.8;
+    }
+    to {
+        opacity: 0.4;
+    }
+}

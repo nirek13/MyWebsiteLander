@@ -67,6 +67,7 @@
     <h1>Welcome to the Starry Skies!</h1>
     <p>Dive into the starry skies that unite us all, no matter the planet!</p>
     <p>This is your new page content without reloading the page.</p>
+    <button id="spacey-button">Explore the Stars</button>
 </div>
 
 <script>
@@ -94,7 +95,30 @@
         }
     });
 </script>
+<script>// Function to create stars
+function createStars() {
+    const starField = document.getElementById('new-page-content');
+    starField.className = 'stars';
+    document.body.appendChild(starField);
 
+    for (let i = 0; i < 100; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+
+        // Set random position and size for stars
+        const size = Math.random() * 3 + 1; // Size between 1 and 4
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        star.style.top = `${Math.random() * 100}vh`;
+        star.style.left = `${Math.random() * 100}vw`;
+
+        starField.appendChild(star);
+    }
+}
+
+// Call the function to create stars
+createStars();
+</script>
 <!-- Linking to script.js where the 3D effects and animations will be handled -->
 <script type="module" src="./script.js"></script>
 
