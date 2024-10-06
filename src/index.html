@@ -74,7 +74,7 @@
         <!-- Additional text -->
         <p class="brag">A Satellite Campus Production</p>
     </div>
-
+    <div id="scroll-text">Scroll ↓</div>
     <!-- Scroll-triggered animation content -->
     <div class="scroll-animation">
         <p class="scrolled">This content will animate when you scroll!</p>
@@ -87,13 +87,15 @@
     <h1>Welcome to the Starry Skies!</h1>
     <p>Dive into the starry skies that unite us all, no matter the planet!</p>
     <p>This is your new page content without reloading the page.</p>
-    <button id="spacey-button">Explore the Stars</button>
+    <button id="spacey-button" >Explore the Stars</button>
 </div>
 
 <script>
     const mainContent = document.getElementById('main-content');
     const newPageContent = document.getElementById('new-page-content');
-
+    document.getElementById('spacey-button').addEventListener('click', () => {
+        window.location.href ='https://selector.voyager-o.ca/'
+    });
     // Event listener for scrolling to switch content
     window.addEventListener('scroll', () => {
         console.log('Scrolling');
@@ -143,6 +145,7 @@
     }
 
     createStars();
+
 </script>
 
 <script type="module" src="./index.js"></script>
