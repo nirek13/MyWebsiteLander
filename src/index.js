@@ -231,6 +231,7 @@ const onScroll = () => {
     }
     else{
         newPageContent.style.opacity = 0;
+        console.log('loading out')
         newPageContent.style.transition = 'opacity 0.5s ease';
     }
 
