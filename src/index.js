@@ -36,7 +36,7 @@ const generateGalaxy = () => {
      * Geometry
      */
     geometry = new THREE.BufferGeometry();
-    parameters.count = 1000000;
+    parameters.count = 500000;
     parameters.size = 0.001;
     parameters.radius = 20;
     parameters.branches = 4;

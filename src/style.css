@@ -99,10 +99,10 @@ html, body {
     position: absolute;
     left: 15%;
     transform: translateX(-50%);
-    font-size: 17px;
+    font-size: 20px;
     z-index: 100;
     color: #e1e1e1;
-    font-family: "Cedarville Cursive", cursive;
+    font-family: "poppins", cursive;
 
 }
 .scroll-content {
